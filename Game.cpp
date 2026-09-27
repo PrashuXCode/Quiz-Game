@@ -69,9 +69,8 @@ int main()
     int choicee,play,ans,highscore,currentscore,click;
     play=1;
     highscore=0;
-    for (int i = 0; i < 1000; i++)
-    {   
-        if (play==1)
+
+        while(play==1)
         {
             
             choicee = Menu();
@@ -126,13 +125,8 @@ int main()
                     cout<<"Please enter a valid option!\n";
                     break;
             }
-        }else if (play!=1)
-        {
-            cout<<"Thanks For Playing!\n";
-            return 0;
         }
-        
-    }
+        cout<<"Thanks For Playing!\n";
     /*random_device rd;
     mt19937 g(rd());
     Shuffle(indexs, indexs + 11 ,g);*/
