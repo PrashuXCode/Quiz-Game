@@ -22,6 +22,47 @@ int optionss[4]={1,2,3,4};
 random_device rd;
 mt19937 gen(rd());
 
+int Menu ()
+{
+    int choicee;
+    cout<<"==================================\n";
+    cout<<"            QUIZ GAME \n";
+    cout<<"==================================\n\n";
+    cout<<"1----->  Play Game \n";
+    cout<<"2----->  Instructions \n";
+    cout<<"3----->  Exit \n\n";
+    cout<<"Enter Your Choice : ";
+    cin>>choicee; 
+    return choicee;
+}
+int Game()
+{
+    int ans,currentscore;
+    shuffle(indexs, indexs + 11 ,gen);
+    currentscore=0;
+    for (int i = 0; i < 10; i++)
+    {
+        cout<<"Question no."<<i+1<<" : "<<arr[indexs[i]][0]<<endl;
+        cout<<"\n";
+        shuffle(optionss,optionss+4,gen);
+        cout<<"1. "<<arr[indexs[i]][optionss[0]]<<endl;
+        cout<<"2. "<<arr[indexs[i]][optionss[1]]<<endl;
+        cout<<"3. "<<arr[indexs[i]][optionss[2]]<<endl;
+        cout<<"4. "<<arr[indexs[i]][optionss[3]]<<endl;
+        cout<<"\nEnter Your Answer(1/2/3/4) : ";
+        cin>>ans;
+        if (arr[indexs[i]][optionss[ans-1]] == arr[indexs[i]][1])
+        {
+            cout<<"Correct Answer! \n";
+            currentscore=currentscore+1;
+        }else
+        {
+            cout<<"Wrong Answer! \n";
+        }
+    }
+    return currentscore;
+}
+
 
 int main()
 {   
@@ -32,89 +73,60 @@ int main()
     {   
         if (play==1)
         {
-            currentscore=0;
-            cout<<"==================================\n";
-            cout<<"            QUIZ GAME \n";
-            cout<<"==================================\n\n";
-            cout<<"1----->  Play Game \n";
-            cout<<"2----->  Instructions \n";
-            cout<<"3----->  Exit \n\n";
-            cout<<"Enter Your Choice : ";
-            cin>>choicee;
+            
+            choicee = Menu();
             switch (choicee)
             {
-            case 1:
-                shuffle(indexs, indexs + 11 ,gen);
-                for (int i = 0; i < 10; i++)
-                {
-                    cout<<"Question no."<<i+1<<" : "<<arr[indexs[i]][0]<<endl;
-                    cout<<"\n";
-                    shuffle(optionss,optionss+4,gen);
-                    cout<<"1. "<<arr[indexs[i]][optionss[0]]<<endl;
-                    cout<<"2. "<<arr[indexs[i]][optionss[1]]<<endl;
-                    cout<<"3. "<<arr[indexs[i]][optionss[2]]<<endl;
-                    cout<<"4. "<<arr[indexs[i]][optionss[3]]<<endl;
-                    cout<<"\nEnter Your Answer(1/2/3/4) : ";
-                    cin>>ans;
-                    if (arr[indexs[i]][optionss[ans-1]] == arr[indexs[i]][1])
+                case 1:
+                    currentscore = Game();
+                    if (currentscore>highscore)
                     {
-                       cout<<"Correct Answer! \n";
-                       currentscore=currentscore+1;
-                    }else
-                    {
-                        cout<<"Wrong Answer! \n";
+                        highscore=currentscore;
                     }
-                    
-                }
-                if (currentscore>highscore)
-                {
-                    highscore=currentscore;
-                }
-                cout<<"\n--->Score Board<---\n\n";
-                cout<<"High Score : "<<highscore<<endl;
-                cout<<"Your Score : "<<currentscore<<endl;
-                cout<<"Click 1 to proceed : ";
-                cin>>click;
-                switch(click)
-                {
-                    case 1:
-                        cout<<"\n\nWant to play again ? \n";
-                        cout<<"1------> Yes \n";
-                        cout<<"2------> No \n\n";
-                        cout<<"Enter Your Choice : ";
-                        cin>>play;
-                        break;
-                    default:
-                        cout<<"Invalid inpiut!!\n";
-                        break;
+                    cout<<"\n--->Score Board<---\n\n";
+                    cout<<"High Score : "<<highscore<<endl;
+                    cout<<"Your Score : "<<currentscore<<endl;
+                    cout<<"Click 1 to proceed : ";
+                    cin>>click;
+                    switch(click)
+                    {
+                        case 1:
+                            cout<<"\n\nWant to play again ? \n";
+                            cout<<"1------> Yes \n";
+                            cout<<"2------> No \n\n";
+                            cout<<"Enter Your Choice : ";
+                            cin>>play;
+                            break;
+                        default:
+                            cout<<"Invalid inpiut!!\n";
+                            break;
+                    }
+                    break;
                 
-                break;
-                }
-            case 2:
-                cout<<"\n Instructions regarding the quiz game.\n";
-                cout<<"1. 10 questions will be given.\n";
-                cout<<"2. 4 options will be provided for each question.\n";
-                cout<<"3. One of the options will be correct.\n";
-                cout<<"4. Each correct option will reward one point.\n";
-                cout<<"5. No points for choosing wrong option.\n";
-                cout<<"6. No negative points will be given.\n";
-                cout<<"7. Score will be tracked throughout the game.\n";
-                cout<<"8. High score will be saved during the session. \n";
-                cout<<"9. Questions are shuffled and will appear in random order. \n";
-                cout<<"10. Beating the high score will save your score during the session. \n";
-                break;
+                case 2:
+                    cout<<"\n Instructions regarding the quiz game.\n";
+                    cout<<"1. 10 questions will be given.\n";
+                    cout<<"2. 4 options will be provided for each question.\n";
+                    cout<<"3. One of the options will be correct.\n";
+                    cout<<"4. Each correct option will reward one point.\n";
+                    cout<<"5. No points for choosing wrong option.\n";
+                    cout<<"6. No negative points will be given.\n";
+                    cout<<"7. Score will be tracked throughout the game.\n";
+                    cout<<"8. High score will be saved during the session. \n";
+                    cout<<"9. Questions are shuffled and will appear in random order. \n";
+                    cout<<"10. Beating the high score will save your score during the session. \n";
+                    break;
 
-            case 3:
-                cout<<"Thanks For Playing!\n";
-                return 0;
+                case 3:
+                    cout<<"Thanks For Playing!\n";
+                    return 0;
         
-            default:
-                cout<<"Invalid choice!\n";
-                cout<<"Please enter a valid option!\n";
-                break;
+                default:
+                    cout<<"Invalid choice!\n";
+                    cout<<"Please enter a valid option!\n";
+                    break;
             }
-            
-        }else if (play !=1)
+        }else if (play!=1)
         {
             cout<<"Thanks For Playing!\n";
             return 0;
