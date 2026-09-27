@@ -25,12 +25,14 @@ mt19937 gen(rd());
 
 int main()
 {   
-    int choicee,play;
+    int choicee,play,ans,highscore,currentscore,click;
     play=1;
+    highscore=0;
     for (int i = 0; i < 1000; i++)
     {   
         if (play==1)
         {
+            currentscore=0;
             cout<<"==================================\n";
             cout<<"            QUIZ GAME \n";
             cout<<"==================================\n\n";
@@ -42,25 +44,46 @@ int main()
             switch (choicee)
             {
             case 1:
+                shuffle(indexs, indexs + 11 ,gen);
+                for (int i = 0; i < 10; i++)
+                {
+                    cout<<"Question no."<<i+1<<" : "<<arr[indexs[i]][0]<<endl;
+                    cout<<"\n";
+                    shuffle(optionss,optionss+4,gen);
+                    cout<<"1. "<<arr[indexs[i]][optionss[0]]<<endl;
+                    cout<<"2. "<<arr[indexs[i]][optionss[1]]<<endl;
+                    cout<<"3. "<<arr[indexs[i]][optionss[2]]<<endl;
+                    cout<<"4. "<<arr[indexs[i]][optionss[3]]<<endl;
+                    cout<<"\nEnter Your Answer(1/2/3/4) : ";
+                    cin>>ans;
+                    if (arr[indexs[i]][optionss[ans-1]] == arr[indexs[i]][1])
+                    {
+                       cout<<"Correct Answer! \n";
+                       currentscore=currentscore+1;
+                    }else
+                    {
+                        cout<<"Wrong Answer! \n";
+                    }
+                    
+                }
+                if (currentscore>highscore)
+                {
+                    highscore=currentscore;
+                }
+                cout<<"\n--->Score Board<---\n\n";
+                cout<<"High Score : "<<highscore<<endl;
+                cout<<"Your Score : "<<currentscore<<endl;
+                cout<<"Click 1 to proceed : ";
+                cin>>click;
+                switch(click)
+                case 1:
+                    cout<<"\n\nWant to play again ? \n";
+                    cout<<"1------> Yes \n";
+                    cout<<"2------> No \n\n";
+                    cout<<"Enter Your Choice : ";
+                    cin>>play;
+                    break;
                 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                cout<<"\n\nWant to play again ? \n";
-                cout<<"1------> Yes \n";
-                cout<<"2------> No \n\n";
-                cout<<"Enter Your Choice : ";
-                cin>>play;
                 break;
 
             case 2:
@@ -97,7 +120,6 @@ int main()
     /*random_device rd;
     mt19937 g(rd());
     Shuffle(indexs, indexs + 11 ,g);*/
-
 
     return 0;
 }
