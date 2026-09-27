@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <random>
 using namespace std;
 
 string arr[11][5]={
@@ -15,8 +17,87 @@ string arr[11][5]={
 {"Which is the largest planet in our solar system?","Jupiter","Saturn","Earth","Neptune"},
 {"Which country is famous for Eiffel Tower ?","France","Italy","Spain","Germany"}
 };
+int indexs[11]={0,1,2,3,4,5,6,7,8,9,10};
+int optionss[4]={1,2,3,4};
+random_device rd;
+mt19937 gen(rd());
+
+
 int main()
-{
-    cout<<arr[0][1];
+{   
+    int choicee,play;
+    play=1;
+    for (int i = 0; i < 1000; i++)
+    {   
+        if (play==1)
+        {
+            cout<<"==================================\n";
+            cout<<"            QUIZ GAME \n";
+            cout<<"==================================\n\n";
+            cout<<"1----->  Play Game \n";
+            cout<<"2----->  Instructions \n";
+            cout<<"3----->  Exit \n\n";
+            cout<<"Enter Your Choice : ";
+            cin>>choicee;
+            switch (choicee)
+            {
+            case 1:
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+                cout<<"\n\nWant to play again ? \n";
+                cout<<"1------> Yes \n";
+                cout<<"2------> No \n\n";
+                cout<<"Enter Your Choice : ";
+                cin>>play;
+                break;
+
+            case 2:
+                cout<<"\n Instructions regarding the quiz game.\n";
+                cout<<"1. 10 questions will be given.\n";
+                cout<<"2. 4 options will be provided for each question.\n";
+                cout<<"3. One of the options will be correct.\n";
+                cout<<"4. Each correct option will reward one point.\n";
+                cout<<"5. No points for choosing wrong option.\n";
+                cout<<"6. No negative points will be given.\n";
+                cout<<"7. Score will be tracked throughout the game.\n";
+                cout<<"8. High score will be premanently saved. \n";
+                cout<<"9. Questions are shuffled and will appear in random order. \n";
+                cout<<"10. Beating the high score will save your score during the session. \n";
+                break;
+
+            case 3:
+                cout<<"Thanks For Playing!\n";
+                return 0;
+        
+            default:
+                cout<<"Invalid choice!\n";
+                cout<<"Please enter a valid option!\n";
+                break;
+            }
+            
+        }else if (play !=1)
+        {
+            cout<<"Thanks For Playing!\n";
+            return 0;
+        }
+        
+    }
+    /*random_device rd;
+    mt19937 g(rd());
+    Shuffle(indexs, indexs + 11 ,g);*/
+
+
     return 0;
 }
