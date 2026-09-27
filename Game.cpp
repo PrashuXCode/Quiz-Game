@@ -76,16 +76,20 @@ int main()
                 cout<<"Click 1 to proceed : ";
                 cin>>click;
                 switch(click)
-                case 1:
-                    cout<<"\n\nWant to play again ? \n";
-                    cout<<"1------> Yes \n";
-                    cout<<"2------> No \n\n";
-                    cout<<"Enter Your Choice : ";
-                    cin>>play;
-                    break;
+                {
+                    case 1:
+                        cout<<"\n\nWant to play again ? \n";
+                        cout<<"1------> Yes \n";
+                        cout<<"2------> No \n\n";
+                        cout<<"Enter Your Choice : ";
+                        cin>>play;
+                        break;
+                    default:
+                        cout<<"Invalid inpiut!!\n";
+                        break;
                 
                 break;
-
+                }
             case 2:
                 cout<<"\n Instructions regarding the quiz game.\n";
                 cout<<"1. 10 questions will be given.\n";
@@ -95,7 +99,7 @@ int main()
                 cout<<"5. No points for choosing wrong option.\n";
                 cout<<"6. No negative points will be given.\n";
                 cout<<"7. Score will be tracked throughout the game.\n";
-                cout<<"8. High score will be premanently saved. \n";
+                cout<<"8. High score will be saved during the session. \n";
                 cout<<"9. Questions are shuffled and will appear in random order. \n";
                 cout<<"10. Beating the high score will save your score during the session. \n";
                 break;
